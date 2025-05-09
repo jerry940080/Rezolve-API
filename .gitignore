@@ -17,9 +17,10 @@ env/
 /tmp/
 output.*
 
-# Model files
-models/
 # Or keep empty models/.gitkeep and track directory
+tts/models/
+translate/models/
+asr/models/
 
 # Jupyter/Notebook (if any)
 *.ipynb_checkpoints
