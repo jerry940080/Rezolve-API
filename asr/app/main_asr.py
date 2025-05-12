@@ -6,7 +6,7 @@ from whisper_handler import transcribe_audio
 import httpx
 
 app = FastAPI()
-TRANSLATOR_API_URL = "http://translate-server:9000/translate"
+TRANSLATOR_API_URL = "http://100.91.96.64:9000/translate"
 
 @app.post("/v1/audio/transcriptions")
 async def transcribe_endpoint(

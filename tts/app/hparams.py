@@ -76,7 +76,7 @@ if voc_model == 'wavernn':
 ################################
 
 # if you have a couple of extremely long spectrograms you might want to use this
-tts_max_mel_len = 500
+tts_max_mel_len = 1000
 # bins the spectrogram lengths before sampling in data loader - speeds up training
 tts_bin_lengths = True
 # clips the gradient norm to prevent explosion - set to None if not needed
@@ -111,7 +111,7 @@ if tts_model == 'tacotron2':
     n_frames_per_step = 3  # currently only 1 is supported
     decoder_rnn_dim = 512  # 1024
     prenet_dim = 64        # 256
-    max_decoder_steps = 1500
+    max_decoder_steps = 3000
     gate_threshold = 0.5
     p_attention_dropout = 0.1
     p_decoder_dropout = 0.1

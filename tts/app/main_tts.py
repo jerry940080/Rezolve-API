@@ -7,9 +7,9 @@ from kokoro_tts import run_kokoro_tts
 app = FastAPI()
 logging.basicConfig(level=logging.INFO)
 
-TRANSLATOR_API_URL = "http://translate-server:9000/translate"
+TRANSLATOR_API_URL = "http://100.91.96.64:9000/translate"
 
-@app.post("/v1/audio/speech/")
+@app.post("/v1/audio/speech")
 async def tts_api(request: Request):
     payload = await request.json()
     text = payload.get("input")
