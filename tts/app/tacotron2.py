@@ -506,7 +506,8 @@ class Decoder(nn.Module):
                 print('Warning: End with low power.')
                 break
             elif len(mel_outputs) == self.max_decoder_steps:
-                print('Warning: Reached max decoder steps.')
+                print('Warning: Reached max decoder steps:')
+                print(self.max_decoder_steps)
                 break
 
             decoder_input = mel_output

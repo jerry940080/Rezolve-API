@@ -111,7 +111,7 @@ if tts_model == 'tacotron2':
     n_frames_per_step = 3  # currently only 1 is supported
     decoder_rnn_dim = 512  # 1024
     prenet_dim = 64        # 256
-    max_decoder_steps = 3000
+    max_decoder_steps = 5000
     gate_threshold = 0.5
     p_attention_dropout = 0.1
     p_decoder_dropout = 0.1
