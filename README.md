@@ -110,7 +110,7 @@ docker compose up --build
 ## 🧪 測試範例
 
 ```bash
-curl -X POST http://localhost:7000/audio/transcriptions \
+curl -X POST http://localhost:7000/v1/audio/transcriptions \
   -F "file=@test.wav" \
   -F "model=whisper-1"
 ```
