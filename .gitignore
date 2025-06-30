@@ -1,0 +1,40 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.so
+
+# Environment
+.env
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Output files
+*.wav
+*.mp3
+*.json
+/tmp/
+output.*
+
+# Or keep empty models/.gitkeep and track directory
+tts/models/
+translate/models/
+asr/models/
+CosyVoice/models
+
+# Jupyter/Notebook (if any)
+*.ipynb_checkpoints
+
+# Docker artifacts
+*.log
+docker-compose.override.yml
+# optional: ignore large image tar
+*.tar
+
+# VSCode & editor config
+.vscode/
+.idea/
+
+# Mac/Linux system files
+.DS_Store

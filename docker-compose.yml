@@ -1,0 +1,117 @@
+version: "3.8"
+
+services:
+
+  # translate-server:
+  #   build: ./translate
+  #   container_name: translate-server
+  #   runtime: nvidia
+  #   ports:
+  #     - "9000:9000"
+  #   volumes:
+  #     - ./translate:/app
+  #   networks:
+  #     - app-network
+  #   shm_size: '1g'
+  #   ipc: host
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #     stack: 67108864  
+  #   environment:
+  #     - NVIDIA_VISIBLE_DEVICES=0  
+
+  asr-server:
+    build: ./asr
+    container_name: asr-server
+    runtime: nvidia
+    ports:
+      - "7000:7000"
+    volumes:
+      - ./asr:/app
+    # depends_on:
+    #   - translate-server
+    networks:
+      - app-network
+    shm_size: '1g'
+    ipc: host
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      stack: 67108864 
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0  
+
+  # tts-server:
+  #   build: ./tts
+  #   container_name: tts-server
+  #   runtime: nvidia
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./tts:/app
+  #   # depends_on:
+  #   #   - translate-server
+  #   networks:
+  #     - app-network  
+  #   shm_size: '1g'
+  #   ipc: host
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #     stack: 67108864 
+  #   environment:
+  #     - NVIDIA_VISIBLE_DEVICES=0
+
+  cosy-server:
+    build: ./CosyVoice
+    container_name: cosy-server
+    runtime: nvidia
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./CosyVoice:/app
+    # depends_on:
+    #   - translate-server
+    networks:
+      - app-network  
+    shm_size: '8g'
+    ipc: host
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      stack: 67108864 
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0    
+  
+  # open-webui:
+  #   image: ghcr.io/open-webui/open-webui:ollama
+  #   container_name: open-webui
+  #   ports:
+  #     - "3000:8080"
+  #   networks:
+  #     - app-network
+  #   volumes:
+  #     - ollama:/root/.ollama
+  #     - open-webui:/app/backend/data
+  #   environment:
+  #     - HOST_GATEWAY=host.docker.internal
+  #     - OLLAMA_MODEL_PATH=/root/.ollama
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             device_ids: ['0']
+  #             capabilities: [gpu]
+
+networks:
+  app-network:  
+    driver: bridge
+volumes:
+  ollama:
+  open-webui:
