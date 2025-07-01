@@ -21,7 +21,7 @@ output.*
 tts/models/
 translate/models/
 asr/models/
-CosyVoice/models
+CosyVoice/models/
 
 # Jupyter/Notebook (if any)
 *.ipynb_checkpoints
